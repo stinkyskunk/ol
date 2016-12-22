@@ -1,4 +1,4 @@
-This is the (mostly) finished project for OwnLocal.
+This is the finished project for OwnLocal.
 
 I used an admin package that I'm quite fond of called BlurAdmin, with Angular 1.  
 
