@@ -96,11 +96,20 @@ describe('Business Service', function () {
       $httpBackend.flush();
     });
 
+    it('resolves if no id specified, dont return the bad object', function () {
+      BusinessService.get().then(function (response) {
+        // make sure we don't get here
+        expect(1).toBe(2);
+      }, function (error) {
+        expect(error).toBeDefined();
+      });
+    });
+
     it('doesnt return bad data', function () {
       var id = 'moo'
-      BusinessService.get(id).then(function (response) {
-        expect(response).toBeDefined();
-        expect(response.id).toBe(undefined);
+      BusinessService.get(id).then(function () {
+        // make sure we don't get here
+        expect(1).toBe(2);
       }, function (error) {
         expect(error).toBeDefined();
       });

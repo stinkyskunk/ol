@@ -23,40 +23,78 @@ describe('Business View Controller', function () {
 
   beforeEach(module('BlurAdmin'));
 
-  beforeEach(inject(function (_BusinessService_, _$stateParams_, $controller, $rootScope, _$location_, $q) {
-    BusinessService = _BusinessService_;
-    spyOn(BusinessService, 'get').and.callFake(function(id) {
-      var deferred = $q.defer();
-      deferred.resolve(response);
-      return deferred.promise;
-    });
-    scope = $rootScope.$new();
-    $location = _$location_;
-    $stateParams = _$stateParams_;
-    $stateParams.id = "1";
-
-    var createController = function() {
-      return $controller('BusinessController.view', {
-        'BusinessService': BusinessService,
-        '$scope': scope,
-        '$stateParams': $stateParams,
-        '$location': $location
+  describe('success', function() {
+    beforeEach(inject(function (_BusinessService_, _$stateParams_, $controller, $rootScope, _$location_, $q) {
+      BusinessService = _BusinessService_;
+      spyOn(BusinessService, 'get').and.callFake(function(id) {
+        var deferred = $q.defer();
+        deferred.resolve(response);
+        return deferred.promise;
       });
-    };
+      scope = $rootScope.$new();
+      $location = _$location_;
+      $stateParams = _$stateParams_;
+      $stateParams.id = "1";
 
-    controller = createController();
-  }));
+      var createController = function() {
+        return $controller('BusinessController.view', {
+          'BusinessService': BusinessService,
+          '$scope': scope,
+          '$stateParams': $stateParams,
+          '$location': $location
+        });
+      };
 
-  it('should exist', function () {
-    expect(BusinessService).toBeDefined();
-    expect(scope).toBeDefined();
-  });
+      controller = createController();
+    }));
 
-  it('should get the specified record', function() {
-    scope.$digest();
+    it('should exist', function () {
+      expect(BusinessService).toBeDefined();
+      expect(scope).toBeDefined();
+    });
 
-    expect(BusinessService.get).toHaveBeenCalledWith("1");
-  });
+    it('should get the specified record', function() {
+      scope.$digest();
+
+      expect(BusinessService.get).toHaveBeenCalledWith("1");
+    });
+  })
+
+  describe('fail', function() {
+    beforeEach(inject(function (_BusinessService_, _$stateParams_, $controller, $rootScope, _$location_, $q) {
+      BusinessService = _BusinessService_;
+      spyOn(BusinessService, 'get').and.callFake(function(id) {
+        var deferred = $q.defer();
+        deferred.reject('error');
+        return deferred.promise;
+      });
+      scope = $rootScope.$new();
+      $location = _$location_;
+      $stateParams = _$stateParams_;
+      $stateParams.id = "1";
+
+      var createController = function() {
+        return $controller('BusinessController.view', {
+          'BusinessService': BusinessService,
+          '$scope': scope,
+          '$stateParams': $stateParams,
+          '$location': $location
+        });
+      };
+
+      controller = createController();
+    }));
+
+    it('should get the specified record', function() {
+      scope.$digest();
+
+      BusinessService.get('moo').then(
+          function() {},
+          function(msg) {
+            expect(msg).toBe('error');
+          });
+    });
+  })
 
 
 });

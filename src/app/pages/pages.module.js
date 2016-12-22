@@ -8,6 +8,7 @@
   angular.module('BlurAdmin.pages', [
     'ui.router',
     'BlurAdmin.pages.business',
+    'BlurAdmin.pages.form',
     'BlurAdmin.pages.ui'
   ])
       .config(routeConfig);

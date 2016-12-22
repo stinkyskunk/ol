@@ -21,6 +21,7 @@ module.exports = function (config) {
       './bower_components/angular-animate/angular-animate.js',
       './bower_components/angular-bootstrap/ui-bootstrap.js',
       './bower_components/angular-ui-sortable/sortable.js',
+      './bower_components/angular-ui-select/dist/select.js',
       './bower_components/angular-ui-router/release/angular-ui-router.js',
       './bower_components/angular-touch/angular-touch.js',
       './bower_components/angular-toastr/dist/angular-toastr.js',
@@ -28,6 +29,7 @@ module.exports = function (config) {
       './bower_components/angular-xeditable/dist/js/xeditable.js',
       './bower_components/angular-slimscroll/angular-slimscroll.js',
       './bower_components/angular-progress-button-styles/dist/angular-progress-button-styles.js',
+      './bower_components/textAngular/dist/textAngular-sanitize.js',
       './bower_components/chart.js/dist/Chart.bundle.js',
       './bower_components/chart.js/dist/Chart.js',
 
