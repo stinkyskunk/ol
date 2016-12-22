@@ -9,7 +9,7 @@
       .controller('BusinessController.list', BusinessControllerList);
 
   /** @ngInject */
-  function BusinessControllerList($scope, $stateParams, BusinessService) {
+  function BusinessControllerList($scope, BusinessService) {
 
     $scope.BusinessService = BusinessService;
     $scope.data = {};

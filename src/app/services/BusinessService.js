@@ -19,12 +19,12 @@
           url: 'http://ec2-54-84-251-148.compute-1.amazonaws.com/businesses/' + id
         }).success(function (data) {
           if (data.id != Number.parseInt(id)) {
-            deferred.reject("There was a problem retrieving the requested record.");
+            deferred.reject("");
           }
 
           deferred.resolve(data);
         }).error(function (msg, code) {
-          console.log(msg);
+          console.log("BusinessService:get " + msg);
           deferred.reject("There was a problem retrieving the requested record.");
         });
         return deferred.promise;
@@ -46,7 +46,7 @@
         }).success(function (data) {
           deferred.resolve(data);
         }).error(function (msg, code) {
-          console.log(msg);
+          console.log("BusinessService:load " + msg);
           deferred.reject("There was a problem retrieving the requested record.");
         });
         return deferred.promise;

@@ -9,7 +9,7 @@
       .controller('BusinessController.view', BusinessControllerView);
 
   /** @ngInject */
-  function BusinessControllerView($scope, $stateParams, BusinessService, $state) {
+  function BusinessControllerView($scope, $stateParams, BusinessService) {
 
     $scope.data = {};
     $scope.data.selectedId = $stateParams.id;
@@ -18,7 +18,7 @@
     BusinessService.get($scope.data.selectedId).then(function (data) {
       $scope.data.business = data;
     }, function(error) {
-      console.error(error);
+      console.error("BusinessControllerView: " + error);
       $scope.data.message = error;
     });
   }
