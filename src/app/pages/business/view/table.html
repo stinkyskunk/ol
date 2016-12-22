@@ -1,0 +1,55 @@
+<div class="business-table widgets">
+
+  <div ng-show="data.message" ng-bind="data.message" class="alert bg-warning closeable" role="alert"></div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div ba-panel ba-panel-title="" ba-panel-class="with-scroll">
+
+        <div class="horizontal-scroll">
+          <ul style="float: right; padding-right: 6px" class="btn-list clearfix">
+            <li><div class="button-wrapper"><button ng-disabled="!data.firstPage" ng-click="firstPage()" type="button" class="btn btn-default">First</button></div></li>
+            <li><div class="button-wrapper"><button ng-disabled="!data.prevPage" ng-click="prevPage()" type="button" class="btn btn-default">Prev</button></div></li>
+            <li><div class="button-wrapper"><button ng-disabled="!data.nextPage" ng-click="nextPage()" type="button" class="btn btn-primary">Next</button></div></li>
+            <li><div class="button-wrapper"><button ng-disabled="!data.lastPage" ng-click="lastPage()" type="button" class="btn btn-default">Last</button></div></li>
+          </ul>
+          <div style="float: left; padding-top: 6px;" class="form-group select-page-size-wrap ">
+            <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+                  ng-model="data.smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
+            </select>
+          </div>
+
+          <table class="table table-hover" st-table="editableTableData">
+            <thead>
+              <tr class="sortable">
+                <th class="table-id">#</th>
+                <th>UUID</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Website</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="item in data.smartTableData">
+                <td class="table-id">{{item.id}}</td>
+                <td>{{item.uuid}}</span></td>
+                <td>{{item.name}}</span></td>
+                <td>
+                  <div>{{item.address}}</div>
+                  <div>{{item.address2}}</div>
+                  <div>{{item.city}}, {{item.state}}&nbsp;{{item.zip}}&nbsp;{{item.country}}</div>
+                </td>
+
+                <td>{{item.phone | phoneNumber}}</span></td>
+                <td><a href="{{item.website}}" target="_blank">{{item.website}}</a></td>
+                <td><a ui-sref="business.view({id: '{{item.id}}'})"><i class="fa fa-plus-circle"></i></a></td>
+              </tr>
+            </tbody>
+         </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

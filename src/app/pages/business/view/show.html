@@ -1,0 +1,31 @@
+<div class="widgets">
+
+  <div ng-show="data.message" ng-bind="data.message" class="alert bg-warning closeable" role="alert"></div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div ng-show="data.business" ba-panel ba-panel-title="{{data.business.name}}" ba-panel-class="with-scroll">
+        <div class="horizontal-scroll">
+         <div>
+            <label for="address">Address</label>
+            <span id="address">
+              <div>{{data.business.address}}</div>
+              <div>{{data.business.address2}}</div>
+              <div>{{data.business.city}}, {{data.business.state}}  {{data.business.zip}}</div>
+              <div>{{data.business.country}}</div>
+            </span>
+          </div>
+          <div>
+            <label for="phone">Phone</label>
+            <span id="phone">{{data.business.phone | phoneNumber}}</span>
+          </div>
+          <div>
+            <label for="website">Website</label>
+            <span id="website"><a href="{{data.business.website}}" target="_blank">{{data.business.website}}</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
