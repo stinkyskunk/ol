@@ -24,6 +24,7 @@
 
           deferred.resolve(data);
         }).error(function (msg, code) {
+          console.log(msg);
           deferred.reject("There was a problem retrieving the requested record.");
         });
         return deferred.promise;
@@ -45,6 +46,7 @@
         }).success(function (data) {
           deferred.resolve(data);
         }).error(function (msg, code) {
+          console.log(msg);
           deferred.reject("There was a problem retrieving the requested record.");
         });
         return deferred.promise;
