@@ -36,7 +36,7 @@
         url += '?page=' + page;
 
         if (perPage !== undefined) {
-          url += '?per_page=' + perPage;
+          url += '&per_page=' + perPage;
         }
 
 
