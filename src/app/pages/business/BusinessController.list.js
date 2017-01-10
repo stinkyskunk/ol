@@ -13,34 +13,18 @@
 
     $scope.BusinessService = BusinessService;
     $scope.data = {};
-    $scope.data.smartTablePageSize = 50;
-    $scope.page = parseInt($stateParams.page, 10);
+    $scope.data.smartTablePageSize = parseInt($stateParams.perPage);
+    $scope.data.page = parseInt($stateParams.page, 10);
+    $scope.data.lastPage = '0';
 
-    $scope.nextPage = function() {
-      load($scope.data.nextPage);
-    }
 
-    $scope.firstPage = function() {
-      load($scope.data.firstPage);
-    }
-
-    $scope.lastPage = function() {
-      load($scope.data.lastPage);
-    }
-
-    $scope.prevPage = function() {
-      load($scope.data.prevPage);
-    }
-
-    function load(uri) {
-      $scope.BusinessService.load($scope.data.smartTablePageSize, uri).then(function (data) {
+    function load() {
+      $scope.BusinessService.load($scope.data.page, $scope.data.smartTablePageSize).then(function (data) {
         $scope.data.smartTableData = data.businesses;
 
-        $scope.data.firstPage = data.pages.first;
-        $scope.data.prevPage = data.pages.prev;
-        $scope.data.nextPage = data.pages.next;
-        $scope.data.lastPage = data.pages.last;
         $scope.data.message = data.message;
+
+        $scope.data.lastPage = data.pages.last.match(/page=(\d+)/)[1];
       });
     }
 
@@ -52,6 +36,14 @@
       }
       load();
     }, true);
+
+    $scope.$watch('data.page', function (newValue, oldValue, scope) {
+      if (newValue == oldValue) {
+        return;
+      }
+      load();
+    }, true);
+
   }
 
 })();

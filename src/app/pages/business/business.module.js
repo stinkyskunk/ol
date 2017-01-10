@@ -17,15 +17,10 @@
           template: '<ui-view  autoscroll="true" autoscroll-body-top></ui-view>',
         })
         .state('business.list', {
-          url: '/list',
+          url: '/list/:page/:perPage',
           controller: 'BusinessController.list',
           templateUrl: 'app/pages/business/view/table.html',
-          title: 'List',
-          params: {
-            page: {
-              value: '0'
-            }
-          }
+          title: 'List'
         })
         .state('business.view', {
           url: '/:id',

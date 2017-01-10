@@ -5,13 +5,12 @@
   <div class="row">
     <div class="col-md-12">
       <div ba-panel ba-panel-title="" ba-panel-class="with-scroll">
-
         <div class="horizontal-scroll">
           <ul style="float: right; padding-right: 6px" class="btn-list clearfix">
-            <li><div class="button-wrapper"><button ng-disabled="!data.firstPage" ng-click="firstPage()" type="button" class="btn btn-default">First</button></div></li>
-            <li><div class="button-wrapper"><button ng-disabled="!data.prevPage" ng-click="prevPage()" type="button" class="btn btn-default">Prev</button></div></li>
-            <li><div class="button-wrapper"><button ng-disabled="!data.nextPage" ui-sref="business.list({page: '{{page + 1}}'})" type="button" class="btn btn-primary">Next</button></div></li>
-            <li><div class="button-wrapper"><button ng-disabled="!data.lastPage" ng-click="lastPage()" type="button" class="btn btn-default">Last</button></div></li>
+            <li><div class="button-wrapper"><button ng-disabled="data.page == 1" ui-sref="business.list({page: 1})" type="button" class="btn btn-default">First</button></div></li>
+            <li><div class="button-wrapper"><button ng-disabled="data.page == 1" ui-sref="business.list({page: {{data.page - 1}}})" type="button" class="btn btn-default">Prev</button></div></li>
+            <li><div class="button-wrapper"><button ng-disabled="data.page == data.lastPage" ui-sref="business.list({page: {{data.page + 1}}})" type="button" class="btn btn-primary">Next</button></div></li>
+            <li><div class="button-wrapper"><button ng-disabled="data.page == data.lastPage" ui-sref="business.list({page: {{data.lastPage}}})" type="button" class="btn btn-default">Last</button></div></li>
           </ul>
           <div style="float: left; padding-top: 6px;" class="form-group select-page-size-wrap ">
             <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
@@ -31,7 +30,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="item in data.smartTableData">
+              <tr ng-class="{iowa: item.state == 'IA'}" ng-repeat="item in data.smartTableData">
                 <td class="table-id">{{item.id}}</td>
                 <td>{{item.uuid}}</span></td>
                 <td>{{item.name}}</span></td>
@@ -43,7 +42,7 @@
 
                 <td>{{item.phone | phoneNumber}}</span></td>
                 <td><a href="{{item.website}}" target="_blank">{{item.website}}</a></td>
-                <td><a ui-sref="business.view({id: '{{item.id}}'})"><i class="fa fa-plus-circle"></i></a></td>
+                <td><a ui-sref="business.view({id: '{{item.id}}'})"><i class="fa fa-3x fa-plus-circle"></i></a></td>
               </tr>
             </tbody>
          </table>

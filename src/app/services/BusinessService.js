@@ -24,15 +24,21 @@
         return deferred.promise;
       };
 
-      this.load = function (perPage, url) {
+      this.load = function (page, perPage, url) {
         var deferred = $q.defer();
         if (url === undefined) {
           url = 'http://ec2-54-84-251-148.compute-1.amazonaws.com/businesses';
         }
 
+        if (page === undefined) {
+          page = 1;
+        }
+        url += '?page=' + page;
+
         if (perPage !== undefined) {
           url += '?per_page=' + perPage;
         }
+
 
         $http({
           method: 'GET',
