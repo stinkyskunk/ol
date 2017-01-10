@@ -10,7 +10,7 @@
           <ul style="float: right; padding-right: 6px" class="btn-list clearfix">
             <li><div class="button-wrapper"><button ng-disabled="!data.firstPage" ng-click="firstPage()" type="button" class="btn btn-default">First</button></div></li>
             <li><div class="button-wrapper"><button ng-disabled="!data.prevPage" ng-click="prevPage()" type="button" class="btn btn-default">Prev</button></div></li>
-            <li><div class="button-wrapper"><button ng-disabled="!data.nextPage" ng-click="nextPage()" type="button" class="btn btn-primary">Next</button></div></li>
+            <li><div class="button-wrapper"><button ng-disabled="!data.nextPage" ui-sref="business.list({page: '{{page + 1}}'})" type="button" class="btn btn-primary">Next</button></div></li>
             <li><div class="button-wrapper"><button ng-disabled="!data.lastPage" ng-click="lastPage()" type="button" class="btn btn-default">Last</button></div></li>
           </ul>
           <div style="float: left; padding-top: 6px;" class="form-group select-page-size-wrap ">

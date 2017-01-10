@@ -23,8 +23,7 @@
           title: 'List',
           params: {
             page: {
-              value: '0',
-              squash: true
+              value: '0'
             }
           }
         })

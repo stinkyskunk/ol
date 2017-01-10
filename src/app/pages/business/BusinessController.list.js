@@ -17,9 +17,7 @@
     $scope.page = parseInt($stateParams.page, 10);
 
     $scope.nextPage = function() {
-      console.log($scope.page)
-      $state.go('.', { page: $scope.page + 1 })
-      // load($scope.data.nextPage);
+      load($scope.data.nextPage);
     }
 
     $scope.firstPage = function() {
@@ -54,10 +52,6 @@
       }
       load();
     }, true);
-
-    $scope.on('stateChangeStart', function(ev, state, params) {
-
-    });
   }
 
 })();
