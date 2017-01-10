@@ -9,14 +9,17 @@
       .controller('BusinessController.list', BusinessControllerList);
 
   /** @ngInject */
-  function BusinessControllerList($scope, BusinessService) {
+  function BusinessControllerList($scope, $stateParams, $state, BusinessService) {
 
     $scope.BusinessService = BusinessService;
     $scope.data = {};
     $scope.data.smartTablePageSize = 50;
+    $scope.page = parseInt($stateParams.page, 10);
 
     $scope.nextPage = function() {
-      load($scope.data.nextPage);
+      console.log($scope.page)
+      $state.go('.', { page: $scope.page + 1 })
+      // load($scope.data.nextPage);
     }
 
     $scope.firstPage = function() {
@@ -52,6 +55,9 @@
       load();
     }, true);
 
+    $scope.on('stateChangeStart', function(ev, state, params) {
+
+    });
   }
 
 })();
