@@ -21,6 +21,12 @@
           controller: 'BusinessController.list',
           templateUrl: 'app/pages/business/view/table.html',
           title: 'List',
+          params: {
+            page: {
+              value: '0',
+              squash: true
+            }
+          }
         })
         .state('business.view', {
           url: '/:id',
